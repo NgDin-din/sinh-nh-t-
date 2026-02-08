@@ -1,0 +1,152 @@
+<!DOCTYPE CSS>
+/* Chèn font chữ tròn trịa từ Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Nền hồng dâu ngọt ngào */
+    background: linear-gradient(180deg, #ffdeeb 0%, #ffffff 100%);
+    font-family: 'Quicksand', sans-serif;
+    overflow: hidden;
+}
+
+.sinh-nhat-container {
+    background: white;
+    padding: 40px 60px;
+    border-radius: 40px;
+    /* Viền hồng đậm mềm mại */
+    border: 8px solid #ffb6c1;
+    box-shadow: 0 15px 30px rgba(255, 182, 193, 0.4);
+    text-align: center;
+    max-width: 80%;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #d63384; /* Màu hồng đậm dễ thương */
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+}
+
+.btn-osomatsu {
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: white;
+    /* Nút màu hồng gradient */
+    background: linear-gradient(45deg, #ff85a2, #ffb6c1);
+    border: none;
+    border-radius: 50px; /* Nút bo tròn hoàn toàn */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 15px rgba(255, 133, 162, 0.3);
+    font-family: 'Quicksand', sans-serif;
+}
+
+/* Hiệu ứng khi Mei đưa chuột vào nút */
+.btn-osomatsu:hover {
+    transform: translateY(-5px) scale(1.05);
+    background: linear-gradient(45deg, #ffb6c1, #ff85a2);
+    box-shadow: 0 12px 20px rgba(255, 133, 162, 0.5);
+}
+
+/* Hiệu ứng khi nhấn nút */
+.btn-osomatsu:active {
+    transform: translateY(2px);
+}
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap');
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Nền hồng dâu phủ toàn màn hình */
+    background: linear-gradient(180deg, #ffdeeb 0%, #ffffff 100%);
+    background-attachment: fixed;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.sinh-nhat-container {
+    background: white;
+    padding: 40px;
+    border-radius: 40px;
+    border: 8px solid #ffb6c1;
+    box-shadow: 0 15px 30px rgba(255, 182, 193, 0.4);
+    text-align: center;
+    max-width: 400px;
+}
+
+h1 {
+    font-size: 2rem;
+    color: #d63384;
+    margin-bottom: 30px;
+}
+
+.btn-osomatsu {
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: white;
+    background: linear-gradient(45deg, #ff85a2, #ffb6c1);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 15px rgba(255, 133, 162, 0.3);
+}
+
+.btn-osomatsu:hover {
+    transform: scale(1.05);
+    background: linear-gradient(45deg, #ffb6c1, #ff85a2);
+}
+/* Tìm đoạn .sticker và thay thế bằng đoạn này */
+.sticker {
+    position: fixed;
+    font-size: 30px; /* Nhỏ lại một chút cho xinh */
+    user-select: none;
+    pointer-events: none;
+    z-index: 0; /* Cho nằm dưới cái khung trắng để bức tranh luôn ở trên cùng */
+    transition: all 2s ease-out;
+    animation: floating 3s ease-in-out infinite;
+    opacity: 0; /* Lúc chưa bấm nút thì nó tàng hình */
+}
+
+/* Mei nhớ giữ nguyên đoạn @keyframes floating này ở dưới nhé */
+@keyframes floating {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    50% { transform: translate(5px, -15px) rotate(10deg); }
+    100% { transform: translate(0, 0) rotate(0deg); }
+}
+/* Code dành riêng cho điện thoại */
+@media (max-width: 600px) {
+    .sinh-nhat-container {
+        width: 85%; /* Khung trắng chiếm 85% chiều ngang điện thoại */
+        padding: 20px;
+        border-width: 5px; /* Viền mỏng lại cho đỡ thô */
+    }
+
+    h1 {
+        font-size: 1.5rem; /* Chữ nhỏ lại để không bị tràn dòng */
+    }
+
+    .btn-osomatsu {
+        padding: 12px 30px;
+        font-size: 1rem;
+    }
+
+    .sticker {
+        font-size: 20px; /* Sticker nhỏ lại cho tinh tế trên màn hình nhỏ */
+    }
+}
