@@ -150,3 +150,32 @@ h1 {
         font-size: 20px; /* Sticker nhỏ lại cho tinh tế trên màn hình nhỏ */
     }
 }
+/* Ảnh vẽ tay ban đầu */
+.anh-chinh {
+    max-width: 100%;
+    border-radius: 20px;
+    border: 5px solid #ffb6c1;
+}
+
+/* 4 ảnh cuộn xuống mới hiện */
+.anh-bay {
+    opacity: 0;
+    transition: all 1s ease-out;
+    margin-bottom: 30px;
+}
+
+.anh-bay img {
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* Trạng thái lúc đầu nằm ngoài màn hình */
+.bay-trai { transform: translateX(-100px); }
+.bay-phai { transform: translateX(100px); }
+
+/* Trạng thái khi đã hiện ra */
+.hien-ra {
+    opacity: 1;
+    transform: translateX(0);
+}
