@@ -1,18 +1,22 @@
 const nutQua = document.getElementById('btn-qua');
 const khuVucAnh = document.getElementById('khu-vuc-anh');
-const videoQua = document.getElementById('video-qua'); // Lấy thẻ video
+const albumAnh = document.getElementById('album-anh');
+const nhacNen = document.getElementById('nhac-nen');
 const icons = ['🌸', '💖', '⭐', '🎈', '🍬', '🌈', '🧸', '✨'];
 
+// --- 1. XỬ LÝ KHI BẤM NÚT ---
 nutQua.addEventListener('click', () => {
-    // 1. Hiện khu vực chứa video
+    // Phát nhạc (File 0210.mp3 trong HTML của Mei)
+    nhacNen.play().catch(e => console.log("Nhạc chờ bạn tương tác để phát"));
+
+    // Hiện tranh vẽ tay và khu vực chứa 4 ảnh
     khuVucAnh.style.display = 'block';
+    albumAnh.style.display = 'block';
+    
+    // Đổi chữ trên nút
+    nutQua.innerText = "Cuộn xuống xem tiếp nè! 👇";
 
-    // 2. Lệnh cho video phát tự động
-    videoQua.play().catch(error => {
-        console.log("Video chưa tự phát được do trình duyệt chặn, nhưng đừng lo!");
-    });
-
-    // 3. Bắn pháo hoa
+    // Bắn pháo hoa
     confetti({
         particleCount: 150,
         spread: 70,
@@ -20,49 +24,54 @@ nutQua.addEventListener('click', () => {
         colors: ['#ff85a2', '#ffb6c1', '#ff4757']
     });
 
-    // 4. Đổi chữ trên nút
-    nutQua.innerText = "Yêu bạn nhiều! ❤️";
-
-    // 5. Tạo sticker né khung video
+    // Tạo các sticker bay lơ lửng xung quanh
     for (let i = 0; i < 25; i++) {
         taoSticker();
     }
 });
 
-// Hàm taoSticker giữ nguyên như bản cũ Mei nhé...
-
+// --- 2. HÀM TẠO STICKER (Né khung ảnh để không che mặt) ---
 function taoSticker() {
     const sticker = document.createElement('div');
     sticker.className = 'sticker';
     sticker.innerText = icons[Math.floor(Math.random() * icons.length)];
 
-    // Lấy vị trí cái khung trắng
     const container = document.querySelector('.sinh-nhat-container');
     const rect = container.getBoundingClientRect();
 
     let x, y;
     let isInside = true;
 
-    // Vòng lặp này để tìm vị trí cho đến khi nào tìm được chỗ nằm NGOÀI cái khung
     while (isInside) {
         x = Math.random() * (window.innerWidth - 50);
         y = Math.random() * (window.innerHeight - 50);
 
-        // Nếu x, y nằm ngoài phạm vi của khung trắng thì mới dừng lại
+        // Kiểm tra né vùng của container chính
         if (x < rect.left - 40 || x > rect.right + 10 || y < rect.top - 40 || y > rect.bottom + 10) {
             isInside = false;
         }
     }
 
-    // Đặt vị trí ban đầu
     sticker.style.left = x + 'px';
     sticker.style.top = y + 'px';
-    sticker.style.opacity = '0'; // Lúc đầu ẩn đi
+    sticker.style.opacity = '0';
 
     document.body.appendChild(sticker);
 
-    // Hiệu ứng hiện ra từ từ
     setTimeout(() => {
         sticker.style.opacity = '0.8';
     }, 100);
 }
+
+// --- 3. XỬ LÝ HIỆU ỨNG CUỘN (SCROLL) HIỆN 4 ẢNH ---
+window.addEventListener('scroll', () => {
+    const cacAnh = document.querySelectorAll('.anh-bay');
+    const triggerBottom = window.innerHeight / 5 * 4;
+
+    cacAnh.forEach(anh => {
+        const anhTop = anh.getBoundingClientRect().top;
+        if(anhTop < triggerBottom) {
+            anh.classList.add('hien-ra');
+        }
+    });
+});
