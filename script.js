@@ -6,17 +6,13 @@ const icons = ['🌸', '💖', '⭐', '🎈', '🍬', '🌈', '🧸', '✨'];
 
 // --- 1. XỬ LÝ KHI BẤM NÚT ---
 nutQua.addEventListener('click', () => {
-    // Phát nhạc (File 0210.mp3 trong HTML của Mei)
-    nhacNen.play().catch(e => console.log("Nhạc chờ bạn tương tác để phát"));
+    nhacNen.play().catch(e => console.log("Nhạc chờ tương tác"));
 
-    // Hiện tranh vẽ tay và khu vực chứa 4 ảnh
     khuVucAnh.style.display = 'block';
     albumAnh.style.display = 'block';
     
-    // Đổi chữ trên nút
     nutQua.innerText = "Cuộn xuống xem tiếp nè! 👇";
 
-    // Bắn pháo hoa
     confetti({
         particleCount: 150,
         spread: 70,
@@ -24,13 +20,12 @@ nutQua.addEventListener('click', () => {
         colors: ['#ff85a2', '#ffb6c1', '#ff4757']
     });
 
-    // Tạo các sticker bay lơ lửng xung quanh
     for (let i = 0; i < 25; i++) {
         taoSticker();
     }
 });
 
-// --- 2. HÀM TẠO STICKER (Né khung ảnh để không che mặt) ---
+// --- 2. HÀM TẠO STICKER ---
 function taoSticker() {
     const sticker = document.createElement('div');
     sticker.className = 'sticker';
@@ -45,8 +40,6 @@ function taoSticker() {
     while (isInside) {
         x = Math.random() * (window.innerWidth - 50);
         y = Math.random() * (window.innerHeight - 50);
-
-        // Kiểm tra né vùng của container chính
         if (x < rect.left - 40 || x > rect.right + 10 || y < rect.top - 40 || y > rect.bottom + 10) {
             isInside = false;
         }
@@ -55,7 +48,6 @@ function taoSticker() {
     sticker.style.left = x + 'px';
     sticker.style.top = y + 'px';
     sticker.style.opacity = '0';
-
     document.body.appendChild(sticker);
 
     setTimeout(() => {
@@ -63,8 +55,9 @@ function taoSticker() {
     }, 100);
 }
 
-// --- 3. XỬ LÝ HIỆU ỨNG CUỘN (SCROLL) HIỆN 4 ẢNH ---
+// --- 3. HIỆU ỨNG CUỘN (SCROLL) TỔNG HỢP ---
 window.addEventListener('scroll', () => {
+    // Phần 1: Cho 4 ảnh bay vào
     const cacAnh = document.querySelectorAll('.anh-bay');
     const triggerBottom = window.innerHeight / 5 * 4;
 
@@ -74,4 +67,13 @@ window.addEventListener('scroll', () => {
             anh.classList.add('hien-ra');
         }
     });
+
+    // Phần 2: Cho lời chúc cuối hiện mờ ra (Đoạn Mei vừa hỏi đây nè!)
+    const loiChuc = document.querySelector('.loi-chuc-cuoi');
+    if (loiChuc) {
+        const loiChucTop = loiChuc.getBoundingClientRect().top;
+        if (loiChucTop < triggerBottom) {
+            loiChuc.classList.add('hien-loi-chuc');
+        }
+    }
 });
