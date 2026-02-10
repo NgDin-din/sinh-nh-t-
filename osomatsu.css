@@ -56,6 +56,10 @@ h1 {
     font-family: 'Quicksand', sans-serif;
 }
 
+.btn-osomatsu:hover {
+    transform: scale(1.05);
+}
+
 /* 4. Các sticker lơ lửng */
 .sticker {
     position: fixed;
@@ -101,4 +105,17 @@ h1 {
 .anh-bay img {
     width: 100%;
     border-radius: 20px;
-    box-shadow: 0 10px 20px rgba(0,0
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    border: 4px solid white;
+}
+
+.bay-trai { transform: translateX(-150px); }
+.bay-phai { transform: translateX(150px); }
+
+.hien-ra {
+    opacity: 1;
+    transform: translateX(0) !important;
+}
+
+/* 7. Lời chúc kết thúc (Phần Mei cần thêm) */
+.loi-chuc-cuoi
