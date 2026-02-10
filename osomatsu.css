@@ -1,83 +1,27 @@
-<!DOCTYPE CSS>
-/* Chèn font chữ tròn trịa từ Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap');
-
-body {
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* Nền hồng dâu ngọt ngào */
-    background: linear-gradient(180deg, #ffdeeb 0%, #ffffff 100%);
-    font-family: 'Quicksand', sans-serif;
-    overflow: hidden;
-}
-
-.sinh-nhat-container {
-    background: white;
-    padding: 40px 60px;
-    border-radius: 40px;
-    /* Viền hồng đậm mềm mại */
-    border: 8px solid #ffb6c1;
-    box-shadow: 0 15px 30px rgba(255, 182, 193, 0.4);
-    text-align: center;
-    max-width: 80%;
-}
-
-h1 {
-    font-size: 2.5rem;
-    color: #d63384; /* Màu hồng đậm dễ thương */
-    margin-bottom: 30px;
-    letter-spacing: 1px;
-}
-
-.btn-osomatsu {
-    padding: 15px 40px;
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: white;
-    /* Nút màu hồng gradient */
-    background: linear-gradient(45deg, #ff85a2, #ffb6c1);
-    border: none;
-    border-radius: 50px; /* Nút bo tròn hoàn toàn */
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 8px 15px rgba(255, 133, 162, 0.3);
-    font-family: 'Quicksand', sans-serif;
-}
-
-/* Hiệu ứng khi Mei đưa chuột vào nút */
-.btn-osomatsu:hover {
-    transform: translateY(-5px) scale(1.05);
-    background: linear-gradient(45deg, #ffb6c1, #ff85a2);
-    box-shadow: 0 12px 20px rgba(255, 133, 162, 0.5);
-}
-
-/* Hiệu ứng khi nhấn nút */
-.btn-osomatsu:active {
-    transform: translateY(2px);
-}
+/* 1. Chèn font chữ và thiết lập chung */
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap');
 
 html, body {
     margin: 0;
     padding: 0;
     width: 100%;
-    height: 100%;
+    /* Cho phép cuộn trang để xem ảnh ở dưới */
+    overflow-x: hidden; 
 }
 
 body {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    /* Nền hồng dâu phủ toàn màn hình */
+    justify-content: flex-start; /* Để nội dung xếp từ trên xuống */
+    min-height: 100vh; /* Dùng min-height thay vì height để trang web có thể dài ra */
     background: linear-gradient(180deg, #ffdeeb 0%, #ffffff 100%);
     background-attachment: fixed;
     font-family: 'Quicksand', sans-serif;
+    padding: 20px 0;
 }
 
+/* 2. Khung chứa chính (Hộp quà) */
 .sinh-nhat-container {
     background: white;
     padding: 40px;
@@ -86,6 +30,10 @@ body {
     box-shadow: 0 15px 30px rgba(255, 182, 193, 0.4);
     text-align: center;
     max-width: 400px;
+    width: 85%;
+    margin-top: 50px;
+    margin-bottom: 30px;
+    z-index: 2;
 }
 
 h1 {
@@ -94,6 +42,7 @@ h1 {
     margin-bottom: 30px;
 }
 
+/* 3. Nút bấm */
 .btn-osomatsu {
     padding: 15px 40px;
     font-size: 1.2rem;
@@ -105,77 +54,82 @@ h1 {
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 8px 15px rgba(255, 133, 162, 0.3);
+    font-family: 'Quicksand', sans-serif;
 }
 
 .btn-osomatsu:hover {
     transform: scale(1.05);
     background: linear-gradient(45deg, #ffb6c1, #ff85a2);
 }
-/* Tìm đoạn .sticker và thay thế bằng đoạn này */
+
+/* 4. Các sticker lơ lửng xung quanh */
 .sticker {
     position: fixed;
-    font-size: 30px; /* Nhỏ lại một chút cho xinh */
+    font-size: 30px;
     user-select: none;
     pointer-events: none;
-    z-index: 0; /* Cho nằm dưới cái khung trắng để bức tranh luôn ở trên cùng */
+    z-index: 1;
     transition: all 2s ease-out;
     animation: floating 3s ease-in-out infinite;
-    opacity: 0; /* Lúc chưa bấm nút thì nó tàng hình */
+    opacity: 0;
 }
 
-/* Mei nhớ giữ nguyên đoạn @keyframes floating này ở dưới nhé */
 @keyframes floating {
     0% { transform: translate(0, 0) rotate(0deg); }
     50% { transform: translate(5px, -15px) rotate(10deg); }
     100% { transform: translate(0, 0) rotate(0deg); }
 }
-/* Code dành riêng cho điện thoại */
-@media (max-width: 600px) {
-    .sinh-nhat-container {
-        width: 85%; /* Khung trắng chiếm 85% chiều ngang điện thoại */
-        padding: 20px;
-        border-width: 5px; /* Viền mỏng lại cho đỡ thô */
-    }
 
-    h1 {
-        font-size: 1.5rem; /* Chữ nhỏ lại để không bị tràn dòng */
-    }
-
-    .btn-osomatsu {
-        padding: 12px 30px;
-        font-size: 1rem;
-    }
-
-    .sticker {
-        font-size: 20px; /* Sticker nhỏ lại cho tinh tế trên màn hình nhỏ */
-    }
-}
-/* Ảnh vẽ tay ban đầu */
+/* 5. Ảnh vẽ tay hiện ra đầu tiên */
 .anh-chinh {
     max-width: 100%;
     border-radius: 20px;
     border: 5px solid #ffb6c1;
+    margin-top: 20px;
 }
 
-/* 4 ảnh cuộn xuống mới hiện */
+/* 6. Album 4 ảnh bay vào khi cuộn trang */
+#album-anh {
+    width: 85%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .anh-bay {
     opacity: 0;
-    transition: all 1s ease-out;
-    margin-bottom: 30px;
+    transition: all 1.2s ease-out;
+    margin-bottom: 40px;
+    width: 100%;
 }
 
 .anh-bay img {
     width: 100%;
-    border-radius: 15px;
+    border-radius: 20px;
     box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    border: 4px solid white;
 }
 
-/* Trạng thái lúc đầu nằm ngoài màn hình */
-.bay-trai { transform: translateX(-100px); }
-.bay-phai { transform: translateX(100px); }
+.bay-trai { transform: translateX(-150px); }
+.bay-phai { transform: translateX(150px); }
 
-/* Trạng thái khi đã hiện ra */
+/* Class này được JavaScript thêm vào khi cuộn tới */
 .hien-ra {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateX(0) !important;
+}
+
+/* 7. Code dành riêng cho điện thoại */
+@media (max-width: 600px) {
+    .sinh-nhat-container {
+        padding: 20px;
+        border-width: 5px;
+    }
+    h1 { font-size: 1.5rem; }
+    .btn-osomatsu {
+        padding: 12px 30px;
+        font-size: 1rem;
+    }
+    .sticker { font-size: 20px; }
 }
