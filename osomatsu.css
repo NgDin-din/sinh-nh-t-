@@ -5,6 +5,7 @@ html, body {
     margin: 0;
     padding: 0;
     width: 100%;
+    /* Cho phép cuộn dọc nhưng khóa cuộn ngang để tránh bị xê dịch */
     overflow-x: hidden; 
 }
 
@@ -20,7 +21,7 @@ body {
     padding: 20px 0;
 }
 
-/* 2. Khung chứa chính (Hộp quà) */
+/* 2. Khung trắng chính (Hộp quà) */
 .sinh-nhat-container {
     background: white;
     padding: 40px;
@@ -33,6 +34,7 @@ body {
     margin-top: 50px;
     margin-bottom: 30px;
     z-index: 2;
+    position: relative;
 }
 
 h1 {
@@ -41,7 +43,7 @@ h1 {
     margin-bottom: 30px;
 }
 
-/* 3. Nút bấm */
+/* 3. Nút bấm OSOMATSU */
 .btn-osomatsu {
     padding: 15px 40px;
     font-size: 1.2rem;
@@ -58,9 +60,10 @@ h1 {
 
 .btn-osomatsu:hover {
     transform: scale(1.05);
+    background: linear-gradient(45deg, #ffb6c1, #ff85a2);
 }
 
-/* 4. Các sticker lơ lửng */
+/* 4. Sticker trang trí lơ lửng */
 .sticker {
     position: fixed;
     font-size: 30px;
@@ -78,7 +81,7 @@ h1 {
     100% { transform: translate(0, 0) rotate(0deg); }
 }
 
-/* 5. Ảnh vẽ tay */
+/* 5. Ảnh quà tặng hiện ra đầu tiên */
 .anh-chinh {
     max-width: 100%;
     border-radius: 20px;
@@ -86,7 +89,7 @@ h1 {
     margin-top: 20px;
 }
 
-/* 6. Album 4 ảnh bay vào */
+/* 6. Album 4 ảnh bay vào từ hai bên */
 #album-anh {
     width: 85%;
     max-width: 400px;
@@ -109,38 +112,52 @@ h1 {
     border: 4px solid white;
 }
 
+/* Trạng thái ban đầu của ảnh trước khi cuộn tới */
 .bay-trai { transform: translateX(-150px); }
 .bay-phai { transform: translateX(150px); }
 
+/* Hiệu ứng khi JavaScript thêm class .hien-ra */
 .hien-ra {
     opacity: 1;
     transform: translateX(0) !important;
 }
 
-/* 7. Lời chúc kết thúc (Phần Mei cần thêm) */
+/* 7. LỜI CHÚC KẾT THÚC (Phần Mei yêu cầu) */
 .loi-chuc-cuoi {
-    opacity: 0;
-    transition: opacity 2s ease-in;
-    margin: 50px 0 100px 0;
+    opacity: 0; /* Ban đầu ẩn đi */
+    transition: opacity 2.5s ease-in; /* Hiện mờ từ từ trong 2.5 giây */
+    margin: 60px 0 100px 0;
     text-align: center;
     padding: 0 20px;
+    width: 85%;
+    max-width: 400px;
 }
 
 .loi-chuc-cuoi p {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     color: #d63384;
     font-weight: bold;
     line-height: 1.6;
     text-shadow: 1px 1px 2px rgba(255, 182, 193, 0.5);
 }
 
+/* Class này sẽ được JS kích hoạt khi cuộn tới cuối trang */
 .hien-loi-chuc {
     opacity: 1 !important;
 }
 
-/* 8. Tối ưu cho điện thoại */
+/* 8. Tối ưu hiển thị cho Điện thoại */
 @media (max-width: 600px) {
-    .sinh-nhat-container { padding: 20px; }
-    h1 { font-size: 1.5rem; }
-    .btn-osomatsu { font-size: 1rem; }
+    .sinh-nhat-container {
+        padding: 25px 15px;
+        border-width: 5px;
+    }
+    h1 { font-size: 1.6rem; }
+    .btn-osomatsu {
+        padding: 12px 30px;
+        font-size: 1rem;
+    }
+    .loi-chuc-cuoi p {
+        font-size: 1.2rem;
+    }
 }
