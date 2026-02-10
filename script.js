@@ -1,9 +1,18 @@
 const nutQua = document.getElementById('btn-qua');
 const khuVucAnh = document.getElementById('khu-vuc-anh');
+const videoQua = document.getElementById('video-qua'); // Lấy thẻ video
 const icons = ['🌸', '💖', '⭐', '🎈', '🍬', '🌈', '🧸', '✨'];
 
 nutQua.addEventListener('click', () => {
-    // 1. Bắn pháo hoa
+    // 1. Hiện khu vực chứa video
+    khuVucAnh.style.display = 'block';
+
+    // 2. Lệnh cho video phát tự động
+    videoQua.play().catch(error => {
+        console.log("Video chưa tự phát được do trình duyệt chặn, nhưng đừng lo!");
+    });
+
+    // 3. Bắn pháo hoa
     confetti({
         particleCount: 150,
         spread: 70,
@@ -11,15 +20,16 @@ nutQua.addEventListener('click', () => {
         colors: ['#ff85a2', '#ffb6c1', '#ff4757']
     });
 
-    // 2. Hiện ảnh và đổi chữ
-    khuVucAnh.style.display = 'block';
+    // 4. Đổi chữ trên nút
     nutQua.innerText = "Yêu bạn nhiều! ❤️";
 
-    // 3. Tạo sticker né khung ảnh
+    // 5. Tạo sticker né khung video
     for (let i = 0; i < 25; i++) {
         taoSticker();
     }
 });
+
+// Hàm taoSticker giữ nguyên như bản cũ Mei nhé...
 
 function taoSticker() {
     const sticker = document.createElement('div');
