@@ -1,11 +1,10 @@
-/* 1. Chèn font chữ và thiết lập chung */
+/* 1. Thiết lập chung */
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap');
 
 html, body {
     margin: 0;
     padding: 0;
     width: 100%;
-    /* Cho phép cuộn trang để xem ảnh ở dưới */
     overflow-x: hidden; 
 }
 
@@ -13,8 +12,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start; /* Để nội dung xếp từ trên xuống */
-    min-height: 100vh; /* Dùng min-height thay vì height để trang web có thể dài ra */
+    justify-content: flex-start;
+    min-height: 100vh;
     background: linear-gradient(180deg, #ffdeeb 0%, #ffffff 100%);
     background-attachment: fixed;
     font-family: 'Quicksand', sans-serif;
@@ -57,12 +56,7 @@ h1 {
     font-family: 'Quicksand', sans-serif;
 }
 
-.btn-osomatsu:hover {
-    transform: scale(1.05);
-    background: linear-gradient(45deg, #ffb6c1, #ff85a2);
-}
-
-/* 4. Các sticker lơ lửng xung quanh */
+/* 4. Các sticker lơ lửng */
 .sticker {
     position: fixed;
     font-size: 30px;
@@ -80,7 +74,7 @@ h1 {
     100% { transform: translate(0, 0) rotate(0deg); }
 }
 
-/* 5. Ảnh vẽ tay hiện ra đầu tiên */
+/* 5. Ảnh vẽ tay */
 .anh-chinh {
     max-width: 100%;
     border-radius: 20px;
@@ -88,7 +82,7 @@ h1 {
     margin-top: 20px;
 }
 
-/* 6. Album 4 ảnh bay vào khi cuộn trang */
+/* 6. Album 4 ảnh bay vào */
 #album-anh {
     width: 85%;
     max-width: 400px;
@@ -107,49 +101,4 @@ h1 {
 .anh-bay img {
     width: 100%;
     border-radius: 20px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-    border: 4px solid white;
-}
-
-.bay-trai { transform: translateX(-150px); }
-.bay-phai { transform: translateX(150px); }
-
-/* Class này được JavaScript thêm vào khi cuộn tới */
-.hien-ra {
-    opacity: 1;
-    transform: translateX(0) !important;
-}
-
-/* 7. Code dành riêng cho điện thoại */
-@media (max-width: 600px) {
-    .sinh-nhat-container {
-        padding: 20px;
-        border-width: 5px;
-    }
-    h1 { font-size: 1.5rem; }
-    .btn-osomatsu {
-        padding: 12px 30px;
-        font-size: 1rem;
-    }
-    .sticker { font-size: 20px; }
-}
-.loi-chuc-cuoi {
-    opacity: 0;
-    transition: opacity 2s ease-in; /* Hiện ra từ từ trong 2 giây */
-    margin: 50px 0 100px 0; /* Khoảng cách để lời chúc nằm thoáng đãng */
-    text-align: center;
-    padding: 0 20px;
-}
-
-.loi-chuc-cuoi p {
-    font-size: 1.5rem;
-    color: #d63384;
-    font-weight: bold;
-    line-height: 1.6;
-    text-shadow: 1px 1px 2px rgba(255, 182, 193, 0.5);
-}
-
-/* Khi JavaScript thêm class này vào thì nó sẽ hiện lên */
-.hien-loi-chuc {
-    opacity: 1 !important;
-}
+    box-shadow: 0 10px 20px rgba(0,0
