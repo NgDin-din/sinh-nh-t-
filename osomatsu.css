@@ -133,3 +133,23 @@ h1 {
     }
     .sticker { font-size: 20px; }
 }
+.loi-chuc-cuoi {
+    opacity: 0;
+    transition: opacity 2s ease-in; /* Hiện ra từ từ trong 2 giây */
+    margin: 50px 0 100px 0; /* Khoảng cách để lời chúc nằm thoáng đãng */
+    text-align: center;
+    padding: 0 20px;
+}
+
+.loi-chuc-cuoi p {
+    font-size: 1.5rem;
+    color: #d63384;
+    font-weight: bold;
+    line-height: 1.6;
+    text-shadow: 1px 1px 2px rgba(255, 182, 193, 0.5);
+}
+
+/* Khi JavaScript thêm class này vào thì nó sẽ hiện lên */
+.hien-loi-chuc {
+    opacity: 1 !important;
+}
